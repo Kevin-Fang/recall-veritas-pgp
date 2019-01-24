@@ -16,18 +16,21 @@ hints:
     outputDirType: keep_output_dir
     keep_cache: 4096
 
-baseCommand: ["tar", "xzvf"]
-
-arguments: ["-C", $(runtime.outdir)] 
+baseCommand: ["samtools", "merge"]
 
 inputs:
-  tgz: 
-    type: File
+  files: 
+    type: File[]
     inputBinding:
-      position: 1
+      position: 2
+      glob: ".bam"
 
 outputs:
-  unzipped:
+  combinedBAM:
     type: File
     outputBinding:
       glob: "*"
+
+arguments:
+  - valueFrom: ${
+      inputs.files.listing[0].basename

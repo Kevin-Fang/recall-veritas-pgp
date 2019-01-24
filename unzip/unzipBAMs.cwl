@@ -17,7 +17,7 @@ inputs:
     type: Directory
 
 outputs:
-  unzipped:
+  combinedBAM:
     type: File[]
 
 steps:
@@ -34,3 +34,10 @@ steps:
       tgz: readBAMList/tgzFiles
     out:
       [unzipped]
+#  combine:
+#    run: combine.cwl
+#    scatter
+#    in:
+#      files: unzip/unzipped
+#    out:
+#      [combinedBAM]
