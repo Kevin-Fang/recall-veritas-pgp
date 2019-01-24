@@ -17,16 +17,18 @@ hints:
     outputDirType: keep_output_dir
     keep_cache: 4096
 
-baseCommand: ["tar", "xzvf"]
+baseCommand: python
 inputs:
-  tgz: 
+  name:
     type: File
-    inputBinding:
-      position: 6
-
+    inputBinding: 
+      position: 2
+  mergeScript:
+    type: File
+    inputBinding: 
+      position: 1
 outputs:
-  unzipped:
-    type: File[] 
+  cram:
+    type: File[]
     outputBinding:
       glob: "*"
-

@@ -1,0 +1,9 @@
+bamDirectory:
+  class: Directory
+  path: keep:b19d352f733cc26bdbf92b773ccba3b0+37367
+mergeBamScript:
+  class: File
+  path: call_samtools_job.py
+generateBamScript:
+  class: File
+  path: generate_samtools_jobs.py

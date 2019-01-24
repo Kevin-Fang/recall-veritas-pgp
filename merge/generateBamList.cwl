@@ -12,21 +12,21 @@ requirements:
     dockerPull: kfangcurii/bcbioarvados
   - class: InlineJavascriptRequirement
 
-hints:
-  arv:RuntimeConstraints:
-    outputDirType: keep_output_dir
-    keep_cache: 4096
+# generates the text files
 
-baseCommand: ["tar", "xzvf"]
+baseCommand: python
 inputs:
-  tgz: 
+  bams:
+    type: Directory
+    inputBinding:
+      position: 1
+  pythonGenerate:
     type: File
     inputBinding:
-      position: 6
+      position: 0 
 
 outputs:
-  unzipped:
+  textFiles:
     type: File[] 
     outputBinding:
-      glob: "*"
-
+      glob: "*.txt"
