@@ -1,7 +1,7 @@
 {
-  "metadata__phenotype": [
-    "", 
-    ""
+  "config__algorithm__align_split_size": [
+    null, 
+    null
   ], 
   "files": [
     [
@@ -16,6 +16,10 @@
         "class": "File"
       }
     ]
+  ], 
+  "config__algorithm__trim_reads": [
+    "False", 
+    "False"
   ], 
   "reference__fasta__base": [
     {
@@ -95,27 +99,9 @@
       ]
     }
   ], 
-  "config__algorithm__qc": [
-    [
-      "contamination", 
-      "coverage", 
-      "fastqc", 
-      "peddy", 
-      "picard", 
-      "qsignature", 
-      "samtools", 
-      "variants"
-    ], 
-    [
-      "contamination", 
-      "coverage", 
-      "fastqc", 
-      "peddy", 
-      "picard", 
-      "qsignature", 
-      "samtools", 
-      "variants"
-    ]
+  "config__algorithm__vcfanno": [
+    [], 
+    []
   ], 
   "config__algorithm__variantcaller": [
     [
@@ -125,9 +111,9 @@
       "gatk-haplotype"
     ]
   ], 
-  "genome_resources__variation__exac": [
-    null, 
-    null
+  "config__algorithm__adapters": [
+    [], 
+    []
   ], 
   "config__algorithm__svcaller": [
     [], 
@@ -169,6 +155,10 @@
       ]
     }
   ], 
+  "rgnames__lb": [
+    null, 
+    null
+  ], 
   "genome_resources__variation__clinvar": [
     {
       "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/variation/clinvar.vcf.gz", 
@@ -194,6 +184,10 @@
   "genome_resources__variation__esp": [
     null, 
     null
+  ], 
+  "rgnames__rg": [
+    "14KFPGN_combined_chr10", 
+    "14KFPGN_combined_chr1"
   ], 
   "reference__genome_context": [
     [
@@ -545,6 +539,10 @@
     null, 
     null
   ], 
+  "rgnames__lane": [
+    "14KFPGN_combined_chr10", 
+    "14KFPGN_combined_chr1"
+  ], 
   "genome_resources__variation__1000g": [
     null, 
     null
@@ -567,6 +565,56 @@
       "class": "File"
     }
   ], 
+  "reference__bwa__indexes": [
+    {
+      "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.amb", 
+      "class": "File", 
+      "secondaryFiles": [
+        {
+          "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.ann", 
+          "class": "File"
+        }, 
+        {
+          "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.bwt", 
+          "class": "File"
+        }, 
+        {
+          "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.pac", 
+          "class": "File"
+        }, 
+        {
+          "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.sa", 
+          "class": "File"
+        }
+      ]
+    }, 
+    {
+      "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.amb", 
+      "class": "File", 
+      "secondaryFiles": [
+        {
+          "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.ann", 
+          "class": "File"
+        }, 
+        {
+          "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.bwt", 
+          "class": "File"
+        }, 
+        {
+          "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.pac", 
+          "class": "File"
+        }, 
+        {
+          "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.sa", 
+          "class": "File"
+        }
+      ]
+    }
+  ], 
+  "config__algorithm__bam_clean": [
+    "False", 
+    "False"
+  ], 
   "config__algorithm__nomap_split_size": [
     250, 
     250
@@ -583,9 +631,21 @@
     null, 
     null
   ], 
+  "config__algorithm__aligner": [
+    "bwa", 
+    "bwa"
+  ], 
   "genome_build": [
     "GRCh37", 
     "GRCh37"
+  ], 
+  "vrn_file": [
+    null, 
+    null
+  ], 
+  "genome_resources__variation__exac": [
+    null, 
+    null
   ], 
   "genome_resources__variation__gnomad_exome": [
     null, 
@@ -594,6 +654,10 @@
   "config__algorithm__recalibrate": [
     "False", 
     "False"
+  ], 
+  "metadata__phenotype": [
+    "", 
+    ""
   ], 
   "genome_resources__aliases__human": [
     "True", 
@@ -647,9 +711,13 @@
       ]
     }
   ], 
-  "vrn_file": [
-    null, 
-    null
+  "config__algorithm__mark_duplicates": [
+    "True", 
+    "True"
+  ], 
+  "rgnames__pu": [
+    "14KFPGN_combined_chr10", 
+    "14KFPGN_combined_chr1"
   ], 
   "genome_resources__variation__polyx": [
     {
@@ -709,9 +777,27 @@
     null, 
     null
   ], 
-  "config__algorithm__vcfanno": [
-    [], 
-    []
+  "config__algorithm__qc": [
+    [
+      "contamination", 
+      "coverage", 
+      "fastqc", 
+      "peddy", 
+      "picard", 
+      "qsignature", 
+      "samtools", 
+      "variants"
+    ], 
+    [
+      "contamination", 
+      "coverage", 
+      "fastqc", 
+      "peddy", 
+      "picard", 
+      "qsignature", 
+      "samtools", 
+      "variants"
+    ]
   ], 
   "analysis": [
     "variant2", 
@@ -744,6 +830,10 @@
   "config__algorithm__exclude_regions": [
     [], 
     []
+  ], 
+  "rgnames__pl": [
+    "illumina", 
+    "illumina"
   ], 
   "genome_resources__variation__train_indels": [
     {

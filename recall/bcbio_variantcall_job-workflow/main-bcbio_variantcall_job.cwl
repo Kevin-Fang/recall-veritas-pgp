@@ -6,6 +6,13 @@ inputs:
   type:
     items: string
     type: array
+- id: config__algorithm__trim_reads
+  type:
+    items:
+    - string
+    - 'null'
+    - boolean
+    type: array
 - id: genome_resources__variation__1000g
   type:
     items:
@@ -17,6 +24,12 @@ inputs:
   - .tbi
   type:
     items: File
+    type: array
+- id: rgnames__lb
+  type:
+    items:
+    - 'null'
+    - string
     type: array
 - id: config__algorithm__min_allele_fraction
   type:
@@ -67,6 +80,13 @@ inputs:
       items: string
       type: array
     type: array
+- id: config__algorithm__adapters
+  type:
+    items:
+    - 'null'
+    - items: 'null'
+      type: array
+    type: array
 - id: genome_resources__rnaseq__gene_bed
   type:
     items: File
@@ -82,6 +102,22 @@ inputs:
     items:
     - 'null'
     - string
+    type: array
+- id: reference__bwa__indexes
+  secondaryFiles:
+  - ^.ann
+  - ^.pac
+  - ^.sa
+  - ^.bwt
+  type:
+    items: File
+    type: array
+- id: config__algorithm__bam_clean
+  type:
+    items:
+    - string
+    - 'null'
+    - boolean
     type: array
 - id: genome_build
   type:
@@ -127,6 +163,12 @@ inputs:
     - items: 'null'
       type: array
     type: array
+- id: config__algorithm__align_split_size
+  type:
+    items:
+    - 'null'
+    - string
+    type: array
 - id: reference__fasta__base
   secondaryFiles:
   - .fai
@@ -170,6 +212,10 @@ inputs:
       items: File
       type: array
     type: array
+- id: config__algorithm__aligner
+  type:
+    items: string
+    type: array
 - id: config__algorithm__recalibrate
   type:
     items:
@@ -199,6 +245,10 @@ inputs:
 - id: reference__snpeff__GRCh37_75
   type:
     items: File
+    type: array
+- id: rgnames__rg
+  type:
+    items: string
     type: array
 - id: genome_resources__aliases__snpeff
   type:
@@ -233,6 +283,10 @@ inputs:
     - 'null'
     - string
     type: array
+- id: rgnames__lane
+  type:
+    items: string
+    type: array
 - id: config__algorithm__validate
   type:
     items:
@@ -250,6 +304,17 @@ inputs:
     - items: 'null'
       type: array
     type: array
+- id: config__algorithm__mark_duplicates
+  type:
+    items:
+    - string
+    - 'null'
+    - boolean
+    type: array
+- id: rgnames__pu
+  type:
+    items: string
+    type: array
 - id: reference__genome_context
   secondaryFiles:
   - .tbi
@@ -259,6 +324,10 @@ inputs:
       type: array
     type: array
 - id: analysis
+  type:
+    items: string
+    type: array
+- id: rgnames__pl
   type:
     items: string
     type: array
@@ -343,24 +412,61 @@ requirements:
 - class: ScatterFeatureRequirement
 - class: SubworkflowFeatureRequirement
 steps:
-- id: organize_noalign
+- id: alignment_to_rec
   in:
   - id: files
     source: files
+  - id: analysis
+    source: analysis
+  - id: config__algorithm__align_split_size
+    source: config__algorithm__align_split_size
+  - id: reference__fasta__base
+    source: reference__fasta__base
+  - id: rgnames__pl
+    source: rgnames__pl
+  - id: rgnames__sample
+    source: rgnames__sample
+  - id: rgnames__pu
+    source: rgnames__pu
+  - id: rgnames__lane
+    source: rgnames__lane
+  - id: rgnames__rg
+    source: rgnames__rg
+  - id: rgnames__lb
+    source: rgnames__lb
+  - id: reference__bwa__indexes
+    source: reference__bwa__indexes
+  - id: config__algorithm__aligner
+    source: config__algorithm__aligner
+  - id: config__algorithm__trim_reads
+    source: config__algorithm__trim_reads
+  - id: config__algorithm__adapters
+    source: config__algorithm__adapters
+  - id: config__algorithm__bam_clean
+    source: config__algorithm__bam_clean
+  - id: config__algorithm__variant_regions
+    source: config__algorithm__variant_regions
+  - id: config__algorithm__mark_duplicates
+    source: config__algorithm__mark_duplicates
   - id: resources
     source: resources
   - id: description
     source: description
   out:
+  - id: alignment_rec
+  run: steps/alignment_to_rec.cwl
+- id: alignment
+  in:
+  - id: alignment_rec
+    source: alignment_to_rec/alignment_rec
+  out:
   - id: align_bam
   - id: work_bam_plus__disc
   - id: work_bam_plus__sr
   - id: hla__fastq
-  run: steps/organize_noalign.cwl
+  run: wf-alignment.cwl
   scatter:
-  - files
-  - resources
-  - description
+  - alignment_rec
   scatterMethod: dotproduct
 - id: prep_samples_to_rec
   in:
@@ -399,7 +505,7 @@ steps:
 - id: postprocess_alignment_to_rec
   in:
   - id: align_bam
-    source: organize_noalign/align_bam
+    source: alignment/align_bam
   - id: config__algorithm__archive
     source: config__algorithm__archive
   - id: config__algorithm__coverage_interval

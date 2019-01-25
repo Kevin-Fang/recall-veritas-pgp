@@ -6,7 +6,7 @@ import sys
 import shutil
 
 TMP_DIR = "./tmp"
-CALL_JOB_NAME = "call_job"
+CALL_JOB_NAME = "bcbio_variantcall_job"
 
 collection = sys.argv[1]
 
@@ -36,7 +36,7 @@ bcbio_job_outline = """details:
 
 # template for each individual job 
 bcbio_job_template = """- algorithm:
-    aligner: false
+    aligner: bwa
     variantcaller: gatk-haplotype
   analysis: variant2
   description: {description}
@@ -84,7 +84,7 @@ subprocess.call(cwl_command)
 print("Finished making CWL with bcbio. Fixing samples..")
 
 # add missing references to CWl samples file
-with open('./{job_name}-workflow/main-call_job-samples.json'.format(job_name = CALL_JOB_NAME)) as f:
+with open('./{job_name}-workflow/main-{job_name}-samples.json'.format(job_name = CALL_JOB_NAME)) as f:
     data = json.load(f)
 
 path_to_add = "/".join(data["reference__fasta__base"][0]["secondaryFiles"][0]["path"].split("/")[:-1])
@@ -101,7 +101,7 @@ for postfix in add_postfixes:
     data["reference__fasta__base"][0]["secondaryFiles"].append(to_add_dict)
 
 
-with open('./{job_name}-workflow/main-call_job-samples-fixed.json'.format(job_name = CALL_JOB_NAME), 'w') as f:
+with open('./{job_name}-workflow/main-{job_name}-samples-fixed.json'.format(job_name = CALL_JOB_NAME), 'w') as f:
     json.dump(data, f, indent=2)
 
 

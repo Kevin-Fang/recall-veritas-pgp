@@ -30,7 +30,9 @@ inputs:
   secondaryFiles:
   - .bai
   type:
-    items: File
+    items:
+    - File
+    - 'null'
     type: array
 - id: config__algorithm__archive
   type:
@@ -199,7 +201,9 @@ outputs:
       - name: genome_resources__variation__lcr
         type: File
       - name: align_bam
-        type: File
+        type:
+        - File
+        - 'null'
       - name: config__algorithm__variant_regions_merged
         type:
         - File

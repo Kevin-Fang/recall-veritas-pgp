@@ -3,9 +3,25 @@
         "variant2",
         "variant2"
     ],
+    "config__algorithm__adapters": [
+        [],
+        []
+    ],
+    "config__algorithm__align_split_size": [
+        null,
+        null
+    ],
+    "config__algorithm__aligner": [
+        "bwa",
+        "bwa"
+    ],
     "config__algorithm__archive": [
         null,
         null
+    ],
+    "config__algorithm__bam_clean": [
+        "False",
+        "False"
     ],
     "config__algorithm__coverage_interval": [
         null,
@@ -22,6 +38,10 @@
     "config__algorithm__exclude_regions": [
         [],
         []
+    ],
+    "config__algorithm__mark_duplicates": [
+        "True",
+        "True"
     ],
     "config__algorithm__min_allele_fraction": [
         10.0,
@@ -72,6 +92,10 @@
     "config__algorithm__tools_on": [
         [],
         []
+    ],
+    "config__algorithm__trim_reads": [
+        "False",
+        "False"
     ],
     "config__algorithm__validate": [
         null,
@@ -340,6 +364,52 @@
     "metadata__phenotype": [
         "",
         ""
+    ],
+    "reference__bwa__indexes": [
+        {
+            "class": "File",
+            "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.amb",
+            "secondaryFiles": [
+                {
+                    "class": "File",
+                    "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.ann"
+                },
+                {
+                    "class": "File",
+                    "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.bwt"
+                },
+                {
+                    "class": "File",
+                    "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.pac"
+                },
+                {
+                    "class": "File",
+                    "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.sa"
+                }
+            ]
+        },
+        {
+            "class": "File",
+            "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.amb",
+            "secondaryFiles": [
+                {
+                    "class": "File",
+                    "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.ann"
+                },
+                {
+                    "class": "File",
+                    "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.bwt"
+                },
+                {
+                    "class": "File",
+                    "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.pac"
+                },
+                {
+                    "class": "File",
+                    "path": "keep:d551264d4ac2f51afdae04f12975f4f0+40158/GRCh37/bwa/GRCh37.fa.sa"
+                }
+            ]
+        }
     ],
     "reference__fasta__base": [
         {
@@ -750,6 +820,26 @@
     "resources": [
         "{}",
         "{}"
+    ],
+    "rgnames__lane": [
+        "14KFPGN_combined_chr10",
+        "14KFPGN_combined_chr1"
+    ],
+    "rgnames__lb": [
+        null,
+        null
+    ],
+    "rgnames__pl": [
+        "illumina",
+        "illumina"
+    ],
+    "rgnames__pu": [
+        "14KFPGN_combined_chr10",
+        "14KFPGN_combined_chr1"
+    ],
+    "rgnames__rg": [
+        "14KFPGN_combined_chr10",
+        "14KFPGN_combined_chr1"
     ],
     "rgnames__sample": [
         "14KFPGN_combined_chr10",
