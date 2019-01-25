@@ -6,6 +6,6 @@ Veritas collection: https://workbench.su92l.arvadosapi.com/collections/su92l-4zz
 
 Contains three steps:
 
-1. Unzip .tgz BAMs --> produces BAMs separated by chromosome  
-2. Concatenate separated BAMs + sort by header  
-3. Create bcbio CWL pipelines for calling with GATK/whatever variant caller
+1. Unzip .tgz BAMs --> produces BAMs separated by chromosome (done)
+2. Variant call each BAM, generating gVCFs (WIP)
+3. Merge gVCFs by name (todo)

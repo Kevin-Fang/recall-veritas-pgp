@@ -9,8 +9,10 @@ $namespaces:
 
 requirements:
   - class: DockerRequirement
-    dockerPull: kfangcurii/bcbioarvados
+    dockerPull: kfang/samtools
   - class: InlineJavascriptRequirement
+  - class: ResourceRequirement
+    ramMin: 6000
 
 hints:
   arv:RuntimeConstraints:
@@ -27,6 +29,8 @@ inputs:
     type: File
     inputBinding: 
       position: 1
+  bams:
+    type: Directory
 outputs:
   mergedBams:
     type: File[]

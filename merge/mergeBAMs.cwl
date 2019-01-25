@@ -8,7 +8,7 @@ $namespaces:
 requirements:
   - class: ScatterFeatureRequirement
   - class: DockerRequirement
-    dockerPull: kfangcurii/bcbioarvados
+    dockerPull: arvados/jobs
   - class: SubworkflowFeatureRequirement
   - class: InlineJavascriptRequirement
 
@@ -47,6 +47,7 @@ steps:
     scatterMethod: dotproduct
     in:
       name: readBamList/names
+      bams: bamDirectory
       mergeScript: mergeBamScript
     out:
       [mergedBams]

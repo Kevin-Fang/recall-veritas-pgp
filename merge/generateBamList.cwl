@@ -9,7 +9,7 @@ $namespaces:
 
 requirements:
   - class: DockerRequirement
-    dockerPull: kfangcurii/bcbioarvados
+    dockerPull: arvados/jobs
   - class: InlineJavascriptRequirement
 
 # generates the text files
