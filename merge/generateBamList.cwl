@@ -27,6 +27,6 @@ inputs:
 
 outputs:
   textFiles:
-    type: File[] 
+    type: Directory
     outputBinding:
-      glob: "*.txt"
+      glob: "*"

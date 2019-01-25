@@ -28,7 +28,7 @@ inputs:
     inputBinding: 
       position: 1
 outputs:
-  cram:
+  mergedBams:
     type: File[]
     outputBinding:
       glob: "*"

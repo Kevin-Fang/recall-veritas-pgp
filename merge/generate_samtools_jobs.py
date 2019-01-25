@@ -18,7 +18,8 @@ for subdir, dirs, files in os.walk(directory):
         else:
             samples[info_split[0]] = [os.path.join(subdir, f)]
 
+os.makedirs("jobs")
 for sample in samples:
-    with open(sample + ".txt", 'w') as f:
+    with open("./jobs/" + sample + ".txt", 'w') as f:
         f.write("\n".join(samples[sample]))
         f.write('\n')

@@ -22,7 +22,12 @@ inputs:
 
 outputs:
   mergedBamDirectory:
-    type: File[]
+    type:
+      type: array
+      items:
+        type: array
+        items: File
+    outputSource: merge/mergedBams
 
 steps:
   generateBamList:

@@ -13,7 +13,7 @@ inputs:
     type: Directory
 
 outputs:
-  bamTexts:
+  names:
     type: File[]
 
 expression: "${
